@@ -2,10 +2,6 @@ import React, { useMemo, useState } from "react";
 import { createEditor, Node, Transforms } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
-import { parse } from 'query-string'
-
-
-// import qs from 'qs'
 
 export function IFrameElements()  {
   const editor = useMemo<ReactEditor>(() => {
