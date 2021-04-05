@@ -7,6 +7,7 @@ import {
   Link
 } from "react-router-dom";
 import { IFrameElements } from './iframe-elements/iframe-elements';
+import './index.css'
 
 const pages: {
   [key: string]: {

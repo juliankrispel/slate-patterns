@@ -54,6 +54,7 @@ export function IFrameElements()  {
           return <div {...attributes}>
             <iframe
               contentEditable={false}
+              title="Youtube video"
               src={`https://www.youtube.com/embed/${element?.videoId}`}
               frameBorder="0"
             ></iframe>

@@ -35,6 +35,7 @@
     "react-router-dom": "^5.2.0",
     "slate": "^0.59.0",
     "slate-history": "^0.59.0",
-    "slate-react": "^0.59.0"
+    "slate-react": "^0.59.0",
+    "use-text-selection": "^1.1.3"
   }
 }
