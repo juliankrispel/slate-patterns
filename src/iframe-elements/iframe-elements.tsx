@@ -1,5 +1,5 @@
 import React, { useMemo, useState } from "react";
-import { createEditor, Node, Transforms } from "slate";
+import { createEditor, Descendant, Node, Transforms } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 
@@ -10,7 +10,7 @@ export function IFrameElements()  {
     return _editor
   }, [])
 
-  const [value, setValue] = useState<Node[]>([
+  const [value, setValue] = useState<Descendant[]>([
     {
       children: [{
         text: "Hey there"

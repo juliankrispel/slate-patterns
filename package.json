@@ -33,9 +33,9 @@
   "dependencies": {
     "@types/react-router-dom": "^5.1.7",
     "react-router-dom": "^5.2.0",
-    "slate": "^0.59.0",
-    "slate-history": "^0.59.0",
-    "slate-react": "^0.59.0",
+    "slate": "^0.62.0",
+    "slate-react": "^0.62.0",
+    "slate-history": "^0.62.0",
     "use-text-selection": "^1.1.3"
   }
 }
