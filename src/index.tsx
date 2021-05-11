@@ -4,9 +4,12 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  useHistory,
+  Redirect,
+  useLocation
 } from "react-router-dom";
-import { DecorateSelection } from './decorate-selection';
+import { HighlightLastActiveSelection } from './highlight-last-selection';
 import { IFrameElements } from './iframe-elements/iframe-elements';
 import './index.css'
 
@@ -20,23 +23,39 @@ const pages: {
     title: 'I frame embeds',
     component: IFrameElements,
   },
-  '/decorate-selection': {
-    title: 'Highlight selection',
-    component: DecorateSelection,
+  '/highlight-last-active-selection': {
+    title: 'Highlight last active selection',
+    component: HighlightLastActiveSelection,
   }
+}
+
+function Nav() {
+  const history = useHistory()
+  const location = useLocation()
+  
+  return (
+    <select
+      style={{
+        marginBottom: '3em',
+        padding: '.5em',
+      }}
+      value={location.pathname}
+      onChange={(e) => {
+        history.push(e.currentTarget.value)
+      }}
+    >
+      {Object.keys(pages).map((path) => (
+        <option value={path}>{pages[path].title}</option>
+      ))}
+    </select>
+  );
 }
 
 function App () {
   return (
     <Router>
       <aside>
-        <ul>
-          {Object.keys(pages).map((path) => (
-            <li>
-              <Link to={path}>{pages[path].title}</Link>
-            </li>
-          ))}
-        </ul>
+        <Nav />
       </aside>
       <main>
         <Switch>
@@ -45,6 +64,9 @@ function App () {
               {createElement(pages[path].component)}
             </Route>
           ))}
+          <Route path="/">
+            <Redirect to={Object.keys(pages)[0]} />
+          </Route>
         </Switch>
       </main>
     </Router>

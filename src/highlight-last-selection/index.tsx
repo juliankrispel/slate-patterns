@@ -1,10 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
-import { BaseRange, createEditor, Location, Node, Range, Text, Transforms } from "slate";
+import { BaseRange, createEditor, Editor, Location, Node, Range, Text, Transforms } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, ReactEditor, Slate, useEditor, useSelected, useSlate, withReact } from "slate-react";
 
-
-export function DecorateEditable() {
+export function EditableWithDecorate() {
   const editor = useSlate()
   const [lastActiveSelection, setLastActiveSelection] = useState<Range>()
 
@@ -13,16 +12,21 @@ export function DecorateEditable() {
   }, [editor.selection])
 
   const decorate = useCallback(
-    ([node]) => {
+    ([node, path]) => {
       if (
         Text.isText(node) &&
         editor.selection == null &&
         lastActiveSelection != null
       ) {
+        const intersection = Range.intersection(lastActiveSelection, Editor.range(editor, path))
+
+        if (intersection == null) {
+          return []
+        }
 
         const range = {
           selected: true,
-          ...lastActiveSelection,
+          ...intersection
         };
 
         return [range]
@@ -44,21 +48,26 @@ export function DecorateEditable() {
   />
 }
 
-export function DecorateSelection()  {
+export function HighlightLastActiveSelection()  {
   const editor = useMemo<ReactEditor>(() => withHistory(withReact(createEditor())) , [])
 
   const [value, setValue] = useState<Node[]>([
     {
       children: [{
-        text: "Make a text selection and then click somewhere other than the editor"
-      }, {
-        text: "You'll then see that your last selection will be highlighted in yellow"
-      }], 
+        text: "Make a text selection and click on the above input"
+      }]
     },
+    { children: [{
+        text: "You'll then see that your last selection will be highlighted in yellow"
+      }]
+    }, 
   ]);
 
-  return <Slate editor={editor} onChange={setValue} value={value}>
-    <DecorateEditable />
-  </Slate>
+  return <div>
+    <input type="text"  style={{ padding: '10px', marginBottom: '2em' }}/>
+    <Slate editor={editor} onChange={setValue} value={value}>
+      <EditableWithDecorate />
+    </Slate>
+  </div>
 }
 
