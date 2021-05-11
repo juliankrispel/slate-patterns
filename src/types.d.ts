@@ -8,6 +8,8 @@ declare module 'slate' {
       videoId?: string
       type?: 'youtube'
     }
-    Text: BaseText
+    Text: BaseText & {
+      selected?: boolean
+    }
   }
 }

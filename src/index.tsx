@@ -6,6 +6,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
+import { DecorateSelection } from './decorate-selection';
 import { IFrameElements } from './iframe-elements/iframe-elements';
 import './index.css'
 
@@ -18,6 +19,10 @@ const pages: {
   '/iframe-embeds': {
     title: 'I frame embeds',
     component: IFrameElements,
+  },
+  '/decorate-selection': {
+    title: 'Highlight selection',
+    component: DecorateSelection,
   }
 }
 

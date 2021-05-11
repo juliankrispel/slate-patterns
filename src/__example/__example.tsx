@@ -3,7 +3,7 @@ import { createEditor, Node, Transforms } from "slate";
 import { withHistory } from "slate-history";
 import { Editable, ReactEditor, Slate, withReact } from "slate-react";
 
-export function IFrameElements()  {
+export function Example()  {
   const editor = useMemo<ReactEditor>(() => withHistory(withReact(createEditor())) , [])
 
   const [value, setValue] = useState<Node[]>([
