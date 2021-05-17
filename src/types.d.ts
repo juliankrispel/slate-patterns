@@ -9,7 +9,7 @@ declare module 'slate' {
       type?: 'youtube'
     }
     Text: BaseText & {
-      selected?: boolean
+      highlighted?: boolean
     }
   }
 }

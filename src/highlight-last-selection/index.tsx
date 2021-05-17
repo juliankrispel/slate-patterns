@@ -25,7 +25,7 @@ export function EditableWithDecorate() {
         }
 
         const range = {
-          selected: true,
+          highlighted: true,
           ...intersection
         };
 
@@ -38,7 +38,7 @@ export function EditableWithDecorate() {
 
   return <Editable
     renderLeaf={(props) => {
-      if (props.leaf.selected) {
+      if (props.leaf.highlighted) {
         return <span {...props.attributes} style={{background: 'yellow'}}>{props.children}</span>
       }
       return <span {...props.attributes}>{props.children}</span>
