@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { BaseRange, createEditor, Editor, Location, Node, Range, Text, Transforms } from "slate";
 import { withHistory } from "slate-history";
-import { Editable, ReactEditor, Slate, useEditor, useSelected, useSlate, withReact } from "slate-react";
+import { DefaultLeaf, Editable, ReactEditor, Slate, useEditor, useSelected, useSlate, withReact } from "slate-react";
 
 export function EditableWithDecorate() {
   const editor = useSlate()
@@ -41,7 +41,7 @@ export function EditableWithDecorate() {
       if (props.leaf.highlighted) {
         return <span {...props.attributes} style={{background: 'yellow'}}>{props.children}</span>
       }
-      return <span {...props.attributes}>{props.children}</span>
+      return <DefaultLeaf {...props} />
     }}
     decorate={decorate}
     placeholder="Write something..."
