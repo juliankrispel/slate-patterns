@@ -9,6 +9,7 @@ import {
   Redirect,
   useLocation
 } from "react-router-dom";
+import { ElementPlaceholders } from './element-placeholders';
 import { HighlightLastActiveSelection } from './highlight-last-selection';
 import { IFrameElements } from './iframe-elements/iframe-elements';
 import './index.css'
@@ -19,6 +20,10 @@ const pages: {
     component: any
   }
 } = {
+  '/element-placeholders': {
+    title: 'Element placeholders',
+    component: ElementPlaceholders,
+  },
   '/iframe-embeds': {
     title: 'I frame embeds',
     component: IFrameElements,

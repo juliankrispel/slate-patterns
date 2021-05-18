@@ -10,6 +10,7 @@ declare module 'slate' {
     }
     Text: BaseText & {
       highlighted?: boolean
+      placeholder?: boolean
     }
   }
 }
