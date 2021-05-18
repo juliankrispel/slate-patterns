@@ -50,7 +50,7 @@ function Nav() {
       }}
     >
       {Object.keys(pages).map((path) => (
-        <option value={path}>{pages[path].title}</option>
+        <option key={path} value={path}>{pages[path].title}</option>
       ))}
     </select>
   );
@@ -64,8 +64,8 @@ function App () {
       </aside>
       <main>
         <Switch>
-          {Object.keys(pages).map(path => (
-            <Route path={path}>
+          {Object.keys(pages).map((path) => (
+            <Route path={path} key={path}>
               {createElement(pages[path].component)}
             </Route>
           ))}

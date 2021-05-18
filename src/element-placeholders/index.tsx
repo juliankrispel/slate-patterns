@@ -1,7 +1,7 @@
-import React, { useCallback, useMemo, useState } from "react";
-import { createEditor, Editor, Element, Text, Node, Range, Transforms } from "slate";
+import React, { useMemo, useState } from "react";
+import { createEditor, Editor, Text, Node, Range } from "slate";
 import { withHistory } from "slate-history";
-import { DefaultElement, DefaultLeaf, Editable, ReactEditor, Slate, withReact } from "slate-react";
+import { DefaultLeaf, Editable, ReactEditor, Slate, withReact } from "slate-react";
 
 export function ElementPlaceholders()  {
   const editor = useMemo<ReactEditor>(() => withHistory(withReact(createEditor())) , [])
@@ -39,7 +39,7 @@ export function ElementPlaceholders()  {
         decorate={([node, path]) => {
           if (editor.selection != null) {
             if (
-              Text.isText(node) &&
+              !Editor.isEditor(node) &&
               Editor.string(editor, [path[0]]) === "" &&
               Range.includes(editor.selection, path) &&
               Range.isCollapsed(editor.selection)
