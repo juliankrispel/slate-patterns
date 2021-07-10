@@ -9,6 +9,7 @@ import {
   Redirect,
   useLocation
 } from "react-router-dom";
+import { AutoCompleteEditor } from './auto-complete';
 import { ElementPlaceholders } from './element-placeholders';
 import { HighlightLastActiveSelection } from './highlight-last-selection';
 import { IFrameElements } from './iframe-elements/iframe-elements';
@@ -31,7 +32,11 @@ const pages: {
   '/highlight-last-active-selection': {
     title: 'Highlight last active selection',
     component: HighlightLastActiveSelection,
-  }
+  },
+  '/auto-complete': {
+    title: 'Auto complete',
+    component: AutoCompleteEditor,
+  },
 }
 
 function Nav() {
