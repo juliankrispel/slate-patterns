@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import { AutoCompleteEditor } from './auto-complete';
 import { ElementPlaceholders } from './element-placeholders';
+import { Entities } from './entities/entities';
 import { HighlightLastActiveSelection } from './highlight-last-selection';
 import { IFrameElements } from './iframe-elements/iframe-elements';
 import './index.css'
@@ -36,6 +37,10 @@ const pages: {
   '/auto-complete': {
     title: 'Auto complete',
     component: AutoCompleteEditor,
+  },
+  '/entities': {
+    title: 'Entities',
+    component: Entities,
   },
 }
 
